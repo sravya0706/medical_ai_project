@@ -1,15 +1,26 @@
 from fastapi import FastAPI
-#this imports first api class
+from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes import router
 
-app = FastAPI()
-#this creates your backend application
+app = FastAPI(
+    title="Medical AI Assistant"
+)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:5174"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/")#This creates an API endpoint.
-def home(): #Defines the function that runs when / is requested.
+app.include_router(router)
+
+@app.get("/")
+def home():
     return {
-        "message": "Medical AI Assistant Backend Running 🚀"
+        "message": "Medical AI Assistant Running 🚀"
     }
-
-#uvicorn main:app --reload---starts asgi server,open main.py app and finds app variable 
-# and restart automaically whenever code changes
