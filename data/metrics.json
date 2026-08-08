@@ -1,0 +1,8 @@
+{
+  "accuracy": 0.89,
+  "precision_weighted": 0.8941105702570239,
+  "recall_weighted": 0.89,
+  "f1_weighted": 0.8909126525624651,
+  "n_train": 1200,
+  "n_test": 300
+}

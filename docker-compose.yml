@@ -1,0 +1,36 @@
+version: "3.8"
+
+# Spins up REAL local MongoDB + Neo4j instances that the app's real
+# pymongo/neo4j driver code will connect to out of the box, using the
+# defaults already in .env.example.
+#
+# Usage:
+#   docker compose up -d
+#   python3 -m app.kg.seed_data      # seeds sample Disease/Symptom/Medication graph
+#   uvicorn app.main:app --reload
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: mediassist_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  neo4j:
+    image: neo4j:5
+    container_name: mediassist_neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    ports:
+      - "7474:7474"   # browser UI: http://localhost:7474
+      - "7687:7687"   # bolt protocol (what the app connects to)
+    volumes:
+      - neo4j_data:/data
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+  neo4j_data:

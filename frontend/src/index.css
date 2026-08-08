@@ -1,0 +1,206 @@
+/* ==========================================================================
+   MediAssist — Design tokens
+
+   Direction: a clinician's notebook, not a hospital waiting room. Warm
+   paper instead of sterile white, deep pine instead of medical blue or
+   the generic terracotta/neon defaults. Precision typography (mono for
+   data — timestamps, session ids, confidence scores) signals "this is
+   a careful instrument," not a chat toy.
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --paper: #f6f5f1;
+  --surface: #ffffff;
+  --ink: #1c2624;
+  --ink-soft: #4a5551;
+  --ink-faint: #8a938f;
+  --pine: #2f6f62;
+  --pine-deep: #234f45;
+  --pine-tint: #e7efec;
+  --sand: #e8e4d9;
+  --sand-line: #dbd6c8;
+  --brick: #b54b3a;
+  --brick-tint: #f6e9e6;
+
+  /* Type */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 1px 2px rgba(28, 38, 36, 0.04), 0 4px 16px rgba(28, 38, 36, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--pine);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--sage, #a8c0b4);
+  color: var(--ink);
+}
+
+/* Keyboard focus is always visible — never suppressed */
+:focus-visible {
+  outline: 2px solid var(--pine);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- Shared primitives ---- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--pine);
+  color: var(--surface);
+}
+
+.btn-primary:hover {
+  background: var(--pine-deep);
+}
+
+.btn-primary:disabled {
+  background: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--sand-line);
+  color: var(--ink-soft);
+}
+
+.btn-ghost:hover {
+  border-color: var(--pine);
+  color: var(--pine);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.field input {
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--sand-line);
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+.field input:focus {
+  border-color: var(--pine);
+  outline: none;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--sand-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.error-text {
+  color: var(--brick);
+  font-size: 13px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

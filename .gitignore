@@ -1,0 +1,15 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+venv/
+.venv/
+*.egg-info/
+node_modules/
+# Generated data artifacts (regenerate via README steps if starting fresh)
+# Comment these out if you want to ship the pre-trained demo artifacts as-is
+# data/chroma_db/
+# data/model.pkl
+# data/label_encoder.pkl
+# data/tfidf_vectorizer.pkl
