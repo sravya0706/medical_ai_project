@@ -13,3 +13,4 @@ node_modules/
 # data/model.pkl
 # data/label_encoder.pkl
 # data/tfidf_vectorizer.pkl
+README.md
